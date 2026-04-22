@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>details</title>
+    <link rel="stylesheet" href="fontawesome/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="pagedetail.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playwrite+CZ:wght@100..400&family=Playwrite+NO:wght@100..400&display=swap" rel="stylesheet">
+    <script src="js/vue.global.prod.js"></script>
+
+
+
+  </head>
+<body>
+  <div id="app">
+    <nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand me-auto" href="#"><img src="img/logoauto.jpg" width="80" height="60" alt="Village malgache" class="about-image"></a>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><a class="navbar-brand me-auto" href="#"><img src="img/logoauto.jpg" width="80" height="60" alt="Village malgache" class="about-image"></a></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link mx-lg-2 active" aria-current="page" href="accueil.html">Accueil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mx-lg-2" href="about.html">A propos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mx-lg-2" href="contact.html" >Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mx-lg-2" href="service.html" >Service</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mx-lg-2" href="service.html" >Circuits professionnels</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mx-lg-2" href="destination.html" >Circuits classics</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+</nav>
+</header>
+
+
+<section id="about" class="about-section">
+  <div class="container">
+    <div class="about-grid">
+
+      <!-- ===== LEFT CONTENT ===== -->
+      <div id="tour-detail" v-if="tour">
+        <div class="destination-card">
+          <h3 class="about-content-title">
+            <i class="bi bi-map"></i> {{ tour.title }}
+          </h3>
+
+          <p class="about-text">
+            {{ tour.description_long }}
+          </p>
+
+          <div class="stats-container">
+            <div class="stat-item">
+              <div class="info-box">
+                <i class="bi bi-calendar-event"></i>
+                <p>{{ tour.duration_days }} jours</p>
+              </div>
+            </div>
+
+            <div class="stat-item">
+              <div class="info-box">
+                <i class="bi bi-activity"></i>
+                <p>{{ tour.level }}</p>
+              </div>
+            </div>
+
+            <div class="stat-item">
+              <div class="info-box">
+                <i class="bi bi-currency-euro"></i>
+                <p>{{ tour.price }} Ar / pers</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> 
+
+      <!-- ===== RIGHT FORM ===== -->
+      <div class="form-container">
+
+        <!-- Step bar -->
+        <div class="step-bar">
+          <div class="step active">1</div>
+          <div class="step">2</div>
+          <div class="step">3</div>
+        </div>
+
+        <!-- FORM START -->
+        <form id="reservationForm" method="post" @submit.prevent="submitReservation">
+
+          <!-- ===== STEP 1 ===== -->
+          <div class="form-step" :class="{ active: currentStep === 0 }">
+            <h3>Informations personnelles</h3>
+            <input type="text" placeholder="Nom complet" name="fullname" id="fullname" v-model="formData.fullname" required>
+            <input type="email" placeholder="Email" name="email" id="email" v-model="formData.email" required>
+            <input type="tel" placeholder="Téléphone" name="tel" id="tel" v-model="formData.tel" required>
+            <button type="button" class="next-btn" @click="nextStep">Suivant</button>
+          </div>
+
+          <!-- ===== STEP 2 ===== -->
+          <div class="form-step" :class="{ active: currentStep === 1 }">
+            <h3>Détails du séjour</h3>
+
+            <div class="form-group">
+              <label>À combien voyagez-vous ?</label>
+
+              <div class="travellers-input">
+                <input type="text" id="travellersField" :value="travellersSummary" @click="showDropdown = !showDropdown" placeholder="Sélectionnez..." readonly>
+
+                <div id="travellersDropdown" class="dropdown" v-if="showDropdown">
+                  <div class="dropdown-item" v-for="(val, key) in formData.travellers" :key="key">
+                    <label>{{ key.charAt(0).toUpperCase() + key.slice(1) }}</label>
+                    <input type="number" id="adultCount" v-model.number="formData.travellers[key]" min="0"">
+                  </div>
+                  <button type="button" id="validateTravellers" @click="showDropdown = false">Valider</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- BUS SEAT SELECTION (Vue) -->
+            <div class="res-card">
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" readonly
+                  :value="selectedSeats.length > 0 ? selectedSeats.join(', ') : 'Aucune place sélectionnée'">
+                <button type="button" class="btn btn-primary"
+                  @click="showBus = !showBus">
+                  <i class="bi bi-grid-fill"></i> Sélectionner
+                </button>
+              </div>
+
+              <!-- Bus Modal Overlay -->
+              <div class="bus-overlay" v-if="showBus" @click.self="showBus = false">
+                <div class="bus-modal">
+                  <span class="close-btn" @click="showBus = false">&times;</span>
+                  <h5 class="text-center mb-4">Choix des places</h5>
+
+                  <!-- Bus Seat Layout -->
+                  <div class="bus-container">
+                    <!-- Driver & Front Seats -->
+                    <div class="row-seats">
+                      <div class="seat chauffeur" title="Chauffeur">C</div>
+                      <div class="front-ring">
+                        <div class="seat" v-for="n in 2" :key="'front-'+n" :class="seatClass(n)" @click="toggleSeat(n)">{{ n }}</div>
+                      </div>
+                    </div>
+
+                    <!-- Middle Rows -->
+                    <div class="row-seats" v-for="r in 6" :key="'row-'+r">
+                      <div class="left-side">
+                        <div class="seat" v-for="c in 2" :key="'l-'+((r-1)*5+c+2)" :class="seatClass((r-1)*5+c+2)" @click="toggleSeat((r-1)*5+c+2)">
+                          {{ (r-1)*5+c+2 }}
+                        </div>
+                      </div>
+                      <div class="couloir"></div>
+                      <div class="right-side">
+                        <div class="seat" v-for="c in 3" :key="'r-'+((r-1)*5+c+4)" :class="seatClass((r-1)*5+c+4)" @click="toggleSeat((r-1)*5+c+4)">
+                          {{ (r-1)*5+c+4 }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Validation -->
+                  <div class="text-center mt-4">
+                    <button type="button" class="btn btn-success" 
+                      :disabled="selectedSeats.length === 0"
+                      @click="showBus = false">
+                      Confirmer ({{ selectedSeats.length }} place{{ selectedSeats.length !== 1 ? 's' : '' }})
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <input type="hidden" name="seats" id="recap-seats"
+                :value="selectedSeats.join(',')">
+            </div>
+
+            <button type="button" class="prev-btn" @click="prevStep">Précédent</button>
+            <button type="button" class="next-btn" @click="nextStep">Suivant</button>
+          </div>
+
+          <!-- ===== STEP 3 ===== -->
+          <div class="form-step" :class="{ active: currentStep === 2 }" id="step-3">
+            <h3>Confirmation</h3>
+            <p>Vérifiez vos informations avant de valider.</p>
+            <button type="button" class="prev-btn" @click="prevStep">Précédent</button>
+            <button type="submit" class="submit-btn" :disabled="isSubmitting">
+              {{ isSubmitting ? 'Envoi...' : 'Réserver' }}
+            </button>
+          </div>
+          <div v-if="message.text" :class="['alert', 'alert-' + message.type]">
+            {{ message.text }}
+          </div>
+        </form>
+        <!-- FORM END -->
+
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Programme journalier -->
+   
+  <section class="journal-section mb-5">
+    <div class="container">
+    <div class="header">
+      <h3 class="about-content-title">Itinéraire jour par jour — tsingy Bemaraha</h3>
+     
+      
+    </div>
+ <div class="about-grod">
+    <div>
+      <img src="img/ginny.jpg" alt="baobab" width="400px" height="300px" class="about-photo">
+    </div>
+    <div class="controls">
+      <div>
+        <button id="openAll" class="premiere">Tout ouvrir</button>
+        <button id="closeAll" class="secondary">Tout fermer</button>
+      </div>
+      <div id="days">
+        <div v-for="item in itineraries" :key="item.id" class="day-card" :class="{ open: item.isOpen }">
+          <div class="day-header" @click="item.isOpen = !item.isOpen">
+            <div class="badge">Jour {{ item.day }}</div>
+            <div>
+              <div class="title">{{ item.title }}</div>
+              <div class="distance" v-if="item.distance">Distance : {{ item.distance }} km</div>
+            </div>
+            <div class="chevron">{{ item.isOpen ? '▲' : '▼' }}</div>
+          </div>
+
+          <div class="day-content" v-show="item.isOpen">
+            <div class="section">
+              <p>{{ item.summary }}</p>
+              <img v-if="item.image" :src="item.image" class="summary-photo">
+            </div>
+            
+            <div class="section meta-grid">
+              <span class="chip" v-if="item.accommodation.length">
+                <i class="fa fa-bed"></i> {{ item.accommodation.join(', ') }}
+              </span>
+              <span class="chip" v-if="item.meals.length">
+                <i class="fa fa-utensils"></i> {{ item.meals.join(', ') }}
+              </span>
+              </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  </section>
+
+    <!-- Inclus / Exclus -->
+    <div class="price-details">
+    <h3 style="color: #8B4513;">Détails du prix</h3>
+
+    <div class="price-columns">
+      <!-- Inclus -->
+      <div class="price-column">
+        <h5 class="text-center">Inclus</h5>
+        <div class="price-cards">
+          <div v-for="p in inclusPrices" :key="p.id" class="price-card inclus">
+            <i class="bi bi-check-circle"></i>
+            <span>{{ p.label }}</span>
+          </div>
+          <div v-if="inclusPrices.length === 0" class="text-muted text-center">
+            Aucun élément inclus
+          </div>
+        </div>
+      </div>
+
+      <!-- Exclus -->
+      <div class="price-column">
+        <h5 class="text-center">Exclus</h5>
+        <div class="price-cards">
+          <div v-for="p in exclusPrices" :key="p.id" class="price-card exclus">
+            <i class="bi bi-x-circle"></i>
+            <span>{{ p.label }}</span>
+          </div>
+          <div v-if="exclusPrices.length === 0" class="text-muted text-center">
+            Aucun élément exclus
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Infos pratiques -->
+<section class="mb-5">
+  <h3 class="about-content-title"> <i class="fa-solid fa-circle-info me-2"></i>Infos pratiques</h3>
+  
+  <div class="container my-4" v-if="tour">
+    <ul class="nav nav-tabs border-0 gap-2" id="ficheTabs" role="tablist">
+      <li class="nav-item">
+        <button class="nav-link active rounded-pill px-4 shadow-sm" data-bs-toggle="tab" data-bs-target="#details" type="button">
+          <i class="fa-solid fa-bicycle me-2"></i>Détails
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link rounded-pill px-4 shadow-sm" data-bs-toggle="tab" data-bs-target="#formalites" type="button">
+          <i class="fa-solid fa-passport me-2"></i>Formalités
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link rounded-pill px-4 shadow-sm" data-bs-toggle="tab" data-bs-target="#equipement" type="button">
+          <i class="fa-solid fa-suitcase me-2"></i>Équipement
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link rounded-pill px-4 shadow-sm" data-bs-toggle="tab" data-bs-target="#climat" type="button">
+          <i class="fa-solid fa-earth-africa me-2"></i>Pays & Climat
+        </button>
+      </li>
+    </ul>
+
+    <div class="tab-content p-4 border rounded-4 bg-white shadow-sm mt-3" id="ficheTabsContent">
+
+      <div class="tab-pane fade show active" id="details" role="tabpanel">
+        <ul class="list-unstyled d-flex flex-column gap-3">
+          <li><i class="fa-regular fa-clock me-2 text-primary"></i><strong>Durée :</strong> {{ tour.duration_days }} jours</li>
+          <li>
+            <i class="fa-solid fa-hotel me-2 text-primary"></i>
+            <strong>Hébergement :</strong> {{ displayAccommodation }}
+          </li>
+          <li>
+            <i class="fa-solid fa-utensils me-2 text-primary"></i>
+            <strong>Repas :</strong> {{ displayMeals }}
+          </li>
+          <li>
+            <i class="fa-solid fa-user-tie me-2 text-primary"></i>
+            <strong>Encadrement :</strong> {{ tour.infos?.staff_details || 'Guide local accompagnateur' }}
+          </li>
+        </ul>
+      </div>
+
+      <div class="tab-pane fade" id="formalites" role="tabpanel">
+        <ul v-if="tour.infos?.formalites && tour.infos.formalites.length" class="list-group list-group-flush">
+          <li v-for="(item, index) in tour.infos.formalites" :key="index" class="list-group-item border-0 ps-0">
+            <i class="fa-solid fa-check text-success me-2"></i> {{ item }}
+          </li>
+        </ul>
+        <div v-else class="text-muted italic py-3 text-center">Aucune formalité spécifique indiquée.</div>
+      </div>
+
+      <div class="tab-pane fade" id="equipement" role="tabpanel">
+        <ul v-if="tour.infos?.equipements && tour.infos.equipements.length" class="row row-cols-1 row-cols-md-2 g-2 list-unstyled">
+          <li v-for="(item, index) in tour.infos.equipements" :key="index" class="col">
+            <i class="fa-solid fa-socks text-secondary me-2"></i> {{ item }}
+          </li>
+        </ul>
+        <div v-else class="text-muted italic py-3 text-center">Liste d'équipement non fournie.</div>
+      </div>
+
+      <div class="tab-pane fade" id="climat" role="tabpanel">
+        <div class="row g-4">
+          <div class="col-md-4 border-end">
+            <h6 class="fw-bold text-uppercase small text-muted">Pays</h6>
+            <p class="fs-5">{{ tour.infos?.country_info || 'Madagascar' }}</p>
+          </div>
+          <div class="col-md-8">
+            <div class="mb-3">
+              <h6 class="fw-bold text-uppercase small text-muted">Climat</h6>
+              <div style="white-space: pre-line;" class="text-dark lh-base">{{ tour.infos?.climate_info || 'Infos non disponibles' }}</div>
+            </div>
+            <div>
+              <h6 class="fw-bold text-uppercase small text-muted">Culture & Paysages</h6>
+              <div style="white-space: pre-line;" class="text-dark lh-base">{{ tour.infos?.culture_info || 'Infos non disponibles' }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+   <!-- Contenu principal ici -->
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-col brand-col">
+      <h2 class="footer-logo">Autochtone <span>Tour</span></h2>
+      <p class="brand-description">Explorez l'authenticité de Madagascar avec des experts passionnés. Des circuits sur mesure pour des souvenirs éternels.</p>
+      <div class="social-icons">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#accueil">Accueil</a></li>
+        <li><a href="#destinations">Nos circuits</a></li>
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#services">Nos services</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contactez-nous</h4>
+      <ul class="contact-list">
+        <li><i class="fas fa-envelope"></i> <a href="mailto:autochtonetourmada@gmail.com">autochtonetourmada@gmail.com</a></li>
+        <li><i class="fas fa-phone"></i> +261 32 60 773 53</li>
+        <li><i class="fas fa-map-marker-alt"></i> Lot IIW 27E Ankorahotra</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="bottom-container">
+      <p>&copy; 2026 Autochtone Tour Madagascar. Tous droits réservés.</p>
+      <p class="credits">Conçu avec passion par <a href="mailto:abrahamrandrianarivo@gmail.com">Abraham</a></p>
+    </div>
+  </div>
+</footer>
+ <script src="pagedetail.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</div>
+</body>
+</html>

@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>detail-circuit</title>
+     <link rel="stylesheet" href="fontawesome/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="detailcircuit.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playwrite+CZ:wght@100..400&family=Playwrite+NO:wght@100..400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playwrite+CZ:wght@100..400&family=Playwrite+NO:wght@100..400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+</head>
+<body>
+   <header class="main-header">
+        <div class="nav-container">
+           <div class="logo">
+             <a href="/">
+               <img src="img/logoautochtone-removebg-preview.png" 
+                     alt="Autochtone Tour Madagascar" 
+                     class="logo-premium">
+             </a>
+           </div>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#" class="active">Acceuil</a></li>
+                    <li><a href="#">A propos</a></li>
+                    <li><a href="#">Circuit Entreprise</a></li>
+                    <li><a href="#">Circuit Professionnel</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-right">
+                <button class="icon-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <button class="icon-btn"><i class="fa-regular fa-user"></i></button>
+                <button class="btn-cta" type="button" data-bs-toggle="modal" data-bs-target="#reservationModal">
+                    Réserver maintenant
+                </button>
+            </div>
+            
+            <div class="mobile-toggle" id="mobile-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <div >
+        <form id="search-form" >      
+     </div>
+
+    <main>
+        <section class="hero-container-terdav">
+    <div class="hero-slider-wrapper">
+        <button class="slider-arrow prev" onclick="moveSlide(-1)">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
+        <div class="slider-main">
+            <div class="slide active" style="background-image: url('img/Andranotora.jpg');"></div>
+            <div class="slide" style="background-image: url('img/madagascar-nature.jpg');"></div>
+        </div>
+
+        <button class="slider-arrow next" onclick="moveSlide(1)">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+
+        <div class="slider-counter">
+            <span id="current-index">1</span> / 2
+        </div>
+    </div>
+</section>
+    </main>
+
+
+
+
+
+<section class="td-detail-section">
+  <div class="td-container">
+    
+    <div class="td-main-content">
+      <nav class="td-breadcrumb">Accueil > Madagascar > Circuit accompagné</nav>
+      
+      <h1 class="td-title">Incontournables Madagascar</h1>
+      
+      <div class="td-header-meta">
+        <div class="td-rating">
+          <div class="td-stars">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <span class="td-reviews-count">4.8 (12 avis)</span>
+        </div>
+
+        <h2 class="td-subtitle">L'âme de l'île Rouge entre sommets et savanes</h2>
+        <div class="td-divider"></div>
+      </div>
+      
+      <p class="td-description">
+        Une traversée exclusive des hautes terres jusqu’au Grand Sud. Ce voyage combine l'exploration des parcs nationaux et des rencontres immersives avec les communautés locales pour une vision durable de la Grande Île.
+      </p>
+
+      <div class="td-highlights">
+        <h3 class="td-highlights-title">Les points forts</h3>
+        <ul class="td-highlights-list">
+          <li><i class="fa-solid fa-check"></i><span>L'exclusivité des bivouacs au pied de l'Andringitra.</span></li>
+          <li><i class="fa-solid fa-check"></i><span>La rencontre solidaire avec les paysans des Hautes Terres.</span></li>
+          <li><i class="fa-solid fa-check"></i><span>Un itinéraire équilibré entre randonnée et détente.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <aside class="td-sidebar">
+  <div class="td-floating-card">
+    
+    <div class="td-card-body">
+      <div class="td-card-meta">
+        <span class="td-card-ref">Code : MADA01</span>
+        <span class="td-card-badge">Coup de cœur</span>
+      </div>
+      
+      <h3 class="td-dest-name">Circuit Sud & Ouest</h3>
+      
+      <div class="td-specs-grid">
+        <div class="td-spec-item">
+          <span class="td-spec-label">DURÉE</span>
+          <div class="td-spec-value-group">
+            <i class="fa-regular fa-calendar-days"></i>
+            <span class="td-spec-value">15 jours</span>
+          </div>
+        </div>
+        
+        <div class="td-spec-item">
+          <span class="td-spec-label">NIVEAU</span>
+          <div class="td-spec-value-group">
+            <i class="fa-solid fa-chart-simple"></i>
+            <span class="td-spec-value">Tranquille</span>
+          </div>
+        </div>
+
+        <div class="td-spec-item">
+          <span class="td-spec-label">ACTIVITÉ</span>
+          <div class="td-spec-value-group">
+            <i class="fa-solid fa-person-hiking"></i>
+            <span class="td-spec-value">Randonnée</span>
+          </div>
+        </div>
+
+        <div class="td-spec-item">
+          <span class="td-spec-label">GROUPE</span>
+          <div class="td-spec-value-group">
+            <i class="fa-solid fa-user-group"></i>
+            <span class="td-spec-value">5 à 12 pers.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="td-card-footer">
+      <div class="td-price-container">
+        <span class="td-price-label">Prix par personne à partir de</span>
+        <div class="td-price-main">
+          <span class="td-amount">2 450 000</span><span class="td-currency">Ar</span>
+        </div>
+        <span class="td-price-details">Vol compris au départ de Paris</span>
+      </div>
+      
+      <button class="td-btn-reserve">
+        <span>Voir les dates et prix</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+      
+      <div class="td-card-links">
+        <a href="#"><i class="fa-solid fa-download"></i> Fiche technique</a>
+        <a href="#"><i class="fa-solid fa-envelope"></i> Demander un devis</a>
+      </div>
+    </div>
+
+  </div>
+</aside>
+
+  </div>
+</section> 
+
+
+
+
+
+
+<section class="td-itinerary-section">
+    <div class="td-itinerary-container">
+        
+        <aside class="td-sticky-column">
+            <div class="td-sticky-wrapper">
+                <h2 class="td-main-itinerary-title">Le programme jour par jour</h2>
+                
+                <div class="td-title-divider"></div>
+                
+                <div class="td-image-frame-modern">
+                    <img src="img/road.jpg" alt="Voyage Madagascar">
+                    <div class="td-photo-overlay">
+                        <span class="td-location-tag"><i class="fa-solid fa-location-dot"></i> Massif de l'Andringitra</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="td-program-content">
+            <div class="td-modern-timeline">
+                
+                <article class="td-step-item">
+                    <div class="td-step-marker">
+                        <div class="td-circle-outline"></div>
+                    </div>
+                    
+                    <div class="td-step-content">
+                        <header class="td-step-header">
+                            <span class="td-day-badge">Jour 1</span>
+                            <h3 class="td-step-title">Antananarivo : Immersion sur les Hautes Terres</h3>
+                        </header>
+
+                        <div class="td-step-body">
+                            <p class="td-step-description">
+                                Accueil à l'aéroport d'Ivato et transfert vers le cœur de la capitale. Première approche de l'atmosphère malgache entre rizières et collines sacrées.
+                            </p>
+                            
+                            <div class="td-step-visual">
+                                <img src="img/madagascar-4601287_1920.jpg" alt="Tana">
+                            </div>
+
+                            <div class="td-step-features">
+                                <div class="td-feature">
+                                    <i class="fa-solid fa-bed"></i>
+                                    <div class="td-feature-text">
+                                        <span class="td-f-label">Hébergement</span>
+                                        <span class="td-f-val">Hôtel de charme</span>
+                                    </div>
+                                </div>
+                                <div class="td-feature">
+                                    <i class="fa-solid fa-utensils"></i>
+                                    <div class="td-feature-text">
+                                        <span class="td-f-label">Repas</span>
+                                        <span class="td-f-val">Dîner inclus</span>
+                                    </div>
+                                </div>
+                                <div class="td-feature">
+                                    <i class="fa-solid fa-clock"></i>
+                                    <div class="td-feature-text">
+                                        <span class="td-f-label">Transfert</span>
+                                        <span class="td-f-val">45 min</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+
+                 <article class="td-step-item">
+                    <div class="td-step-marker">
+                        <div class="td-circle-outline"></div>
+                    </div>
+                    
+                    <div class="td-step-content">
+                        <header class="td-step-header">
+                            <span class="td-day-badge">Jour 3</span>
+                            <h3 class="td-step-title">Antananarivo : Immersion sur les Hautes Terres</h3>
+                        </header>
+
+                        <div class="td-step-body">
+                            <p class="td-step-description">
+                                Accueil à l'aéroport d'Ivato et transfert vers le cœur de la capitale. Première approche de l'atmosphère malgache entre rizières et collines sacrées.
+                            </p>
+                            
+                            <div class="td-step-visual">
+                                <img src="img/madagascar-4601287_1920.jpg" alt="Tana">
+                            </div>
+
+                            <div class="td-step-features">
+                                <div class="td-feature">
+                                    <i class="fa-solid fa-bed"></i>
+                                    <div class="td-feature-text">
+                                        <span class="td-f-label">Hébergement</span>
+                                        <span class="td-f-val">Hôtel de charme</span>
+                                    </div>
+                                </div>
+                                <div class="td-feature">
+                                    <i class="fa-solid fa-utensils"></i>
+                                    <div class="td-feature-text">
+                                        <span class="td-f-label">Repas</span>
+                                        <span class="td-f-val">Dîner inclus</span>
+                                    </div>
+                                </div>
+                                <div class="td-feature">
+                                    <i class="fa-solid fa-clock"></i>
+                                    <div class="td-feature-text">
+                                        <span class="td-f-label">Transfert</span>
+                                        <span class="td-f-val">45 min</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                 <article class="td-step-item">
+                    <div class="td-step-marker">
+                        <div class="td-circle-outline"></div>
+                    </div>
+                    
+                    <div class="td-step-content">
+                        <header class="td-step-header">
+                            <span class="td-day-badge">Jour 3</span>
+                            <h3 class="td-step-title">Antananarivo : Immersion sur les Hautes Terres</h3>
+                        </header>
+
+                        <div class="td-step-body">
+                            <p class="td-step-description">
+                                Accueil à l'aéroport d'Ivato et transfert vers le cœur de la capitale. Première approche de l'atmosphère malgache entre rizières et collines sacrées.
+                            </p>
+                            
+                            <div class="td-step-visual">
+                                <img src="img/madagascar-4601287_1920.jpg" alt="Tana">
+                            </div>
+
+                            <div class="td-step-features">
+                                <div class="td-feature">
+                                    <i class="fa-solid fa-bed"></i>
+                                    <div class="td-feature-text">
+                                        <span class="td-f-label">Hébergement</span>
+                                        <span class="td-f-val">Hôtel de charme</span>
+                                    </div>
+                                </div>
+                                <div class="td-feature">
+                                    <i class="fa-solid fa-utensils"></i>
+                                    <div class="td-feature-text">
+                                        <span class="td-f-label">Repas</span>
+                                        <span class="td-f-val">Dîner inclus</span>
+                                    </div>
+                                </div>
+                                <div class="td-feature">
+                                    <i class="fa-solid fa-clock"></i>
+                                    <div class="td-feature-text">
+                                        <span class="td-f-label">Transfert</span>
+                                        <span class="td-f-val">45 min</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<section class="td-price-details-section">
+    <div class="td-price-container">
+        <h2 class="td-main-itinerary-title">Détails du prix</h2>
+        <div class="td-title-divider"></div>
+        
+        <div class="td-price-grid">
+            <div class="td-price-column">
+                <h3 class="td-column-subtitle">Le prix comprend</h3>
+                <ul class="td-price-list-fine">
+                    <li>
+                        <i class="fa-solid fa-check td-icon-included"></i>
+                        <p>Le transport aérien sur vols réguliers internationaux</p>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-check td-icon-included"></i>
+                        <p>Les taxes aériennes et la surcharge carburant</p>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-check td-icon-included"></i>
+                        <p>L'hébergement en chambre double (hôtels, lodges, bivouacs)</p>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-check td-icon-included"></i>
+                        <p>La pension complète (boissons non comprises)</p>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-check td-icon-included"></i>
+                        <p>L'encadrement par un guide accompagnateur local francophone</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="td-vertical-separator"></div>
+
+            <div class="td-price-column">
+                <h3 class="td-column-subtitle">Le prix ne comprend pas</h3>
+                <ul class="td-price-list-fine">
+                    <li>
+                        <i class="fa-solid fa-xmark td-icon-excluded"></i>
+                        <p>Les frais de visa (à régler à l'arrivée)</p>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-xmark td-icon-excluded"></i>
+                        <p>Les boissons et les dépenses personnelles</p>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-xmark td-icon-excluded"></i>
+                        <p>Les pourboires pour l'équipe locale</p>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-xmark td-icon-excluded"></i>
+                        <p>Les assurances optionnelles (assistance, annulation, rapatriement)</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+<section class="td-privatisation-section">
+    <div class="td-privatisation-card-green">
+        <h2 class="td-main-itinerary-title-white">Privatisez votre voyage</h2>
+        <div class="td-title-divider-white"></div>
+        
+        <div class="td-privatisation-content">
+            <p class="td-privatisation-text-white">
+                Envie de partir en famille ou avec vos amis aux dates que vous souhaitez ?
+            </p>
+            
+            <a href="#" class="td-btn-quote-white">
+                Demander un devis
+            </a>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+<section class="td-section-wrapper">
+    <div class="td-header">
+        <h2 class="td-title">Fiche technique</h2>
+        <div class="td-line"></div>
+    </div>
+
+<div class="td-tech-grid">
+    <div class="td-tech-card" onclick="openTerdavModal('esprit')">
+        <i class="ri-lightbulb-line td-card-icon"></i>
+        <span class="td-card-text">L'esprit du voyage</span>
+    </div>
+    <div class="td-tech-card" onclick="openTerdavModal('itineraire')">
+        <i class="ri-map-pin-line td-card-icon"></i>
+        <span class="td-card-text">Itinéraire détaillé</span>
+    </div>
+    <div class="td-tech-card" onclick="openTerdavModal('formalites')">
+        <i class="ri-shield-check-line td-card-icon"></i>
+        <span class="td-card-text">Formalités & santé</span>
+    </div>
+    <div class="td-tech-card" onclick="openTerdavModal('budget')">
+        <i class="ri-wallet-3-line td-card-icon"></i>
+        <span class="td-card-text">Budget & prix</span>
+    </div>
+    <div class="td-tech-card" onclick="openTerdavModal('equipement')">
+        <i class="ri-t-shirt-line td-card-icon"></i>
+        <span class="td-card-text">Équipement conseillé</span>
+    </div>
+    <div class="td-tech-card" onclick="openTerdavModal('extensions')">
+        <i class="ri-add-circle-line td-card-icon"></i>
+        <span class="td-card-text">Extensions possibles</span>
+    </div>
+</div>
+
+<div id="tdModal" class="td-modal-overlay">
+    <div class="td-modal-container">
+        
+        <div class="td-modal-header">
+            <div class="td-modal-top-bar">
+                <h2 class="td-modal-main-title">Fiche technique</h2>
+                <button class="td-modal-close" onclick="closeTerdavModal()">&times;</button>
+            </div>
+            
+            <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+            <nav class="td-modal-tabs">
+                 <button class="td-tab-btn" id="btn-esprit" onclick="switchTerdavTab('esprit')">
+                  <i class="ri-lightbulb-flash-line td-tab-icon"></i>
+                  <span class="td-tab-text">L'esprit du voyage</span>
+                </button>
+
+                <button class="td-tab-btn" id="btn-itineraire" onclick="switchTerdavTab('itineraire')">
+                  <i class="ri-map-2-line td-tab-icon"></i>
+                  <span class="td-tab-text">L'itinéraire</span>
+                </button>
+
+               <button class="td-tab-btn" id="btn-formalites" onclick="switchTerdavTab('formalites')">
+                 <i class="ri-passport-line td-tab-icon"></i>
+                 <span class="td-tab-text">Formalités & santé</span>
+               </button>
+
+               <button class="td-tab-btn" id="btn-budget" onclick="switchTerdavTab('budget')">
+                  <i class="ri-money-euro-box-line td-tab-icon"></i>
+                  <span class="td-tab-text">Budget & prix</span>
+               </button>
+
+               <button class="td-tab-btn" id="btn-equipement" onclick="switchTerdavTab('equipement')">
+                  <i class="ri-shirt-line td-tab-icon"></i>
+                  <span class="td-tab-text">Équipement</span>
+               </button>
+
+               <button class="td-tab-btn" id="btn-extensions" onclick="switchTerdavTab('extensions')">
+                  <i class="ri-add-circle-line td-tab-icon"></i>
+                  <span class="td-tab-text">Extensions</span>
+              </button>
+           </nav>
+        </div>
+
+        <div class="td-modal-content">
+            <div id="pane-esprit" class="td-pane">
+                <h3 class="td-pane-title">Esprit du voyage</h3>
+                <p class="td-pane-desc">Une immersion authentique au cœur des régions visitées...</p>
+                <ul class="td-pane-list">
+                    <li>Rencontres avec les populations locales.</li>
+                    <li>Hébergements de charme et éco-responsables.</li>
+                    <li>Rythme adapté pour une découverte approfondie.</li>
+                </ul>
+            </div>
+            <div id="pane-itineraire" class="td-pane">
+                <h3 class="td-pane-title">Esprit du voyage</h3>
+                <p class="td-pane-desc">Une immersion authentique au cœur des régions visitées...</p>
+                <ul class="td-pane-list">
+                    <li>Rencontres avec les populations locales.</li>
+                    <li>Hébergements de charme et éco-responsables.</li>
+                    <li>Rythme adapté pour une découverte approfondie.</li>
+                </ul>
+            </div>
+            <div id="pane-formalites" class="td-pane">
+                <h3 class="td-pane-title">Esprit du voyage</h3>
+                <p class="td-pane-desc">Une immersion authentique au cœur des régions visitées...</p>
+                <ul class="td-pane-list">
+                    <li>Rencontres avec les populations locales.</li>
+                    <li>Hébergements de charme et éco-responsables.</li>
+                    <li>Rythme adapté pour une découverte approfondie.</li>
+                </ul>
+            </div>
+            <div id="pane-budget" class="td-pane">
+                <h3 class="td-pane-title">Esprit du voyage</h3>
+                <p class="td-pane-desc">Une immersion authentique au cœur des régions visitées...</p>
+                <ul class="td-pane-list">
+                    <li>Rencontres avec les populations locales.</li>
+                    <li>Hébergements de charme et éco-responsables.</li>
+                    <li>Rythme adapté pour une découverte approfondie.</li>
+                </ul>
+            </div>
+            <div id="pane-equipement" class="td-pane">
+                <h3 class="td-pane-title">Esprit du voyage</h3>
+                <p class="td-pane-desc">Une immersion authentique au cœur des régions visitées...</p>
+                <ul class="td-pane-list">
+                    <li>Rencontres avec les populations locales.</li>
+                    <li>Hébergements de charme et éco-responsables.</li>
+                    <li>Rythme adapté pour une découverte approfondie.</li>
+                </ul>
+            </div>
+            <div id="pane-extensions" class="td-pane">
+                <h3 class="td-pane-title">Esprit du voyage</h3>
+                <p class="td-pane-desc">Une immersion authentique au cœur des régions visitées...</p>
+                <ul class="td-pane-list">
+                    <li>Rencontres avec les populations locales.</li>
+                    <li>Hébergements de charme et éco-responsables.</li>
+                    <li>Rythme adapté pour une découverte approfondie.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--- Formulaire de reservation --->
+<div class="modal fade" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="reservationModalLabel">Formulaire de Réservation</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="reservationApp">
+          <!-- FORM START -->
+          <form id="reservationForm" @submit.prevent="submitReservation">
+
+            <!-- ===== STEP 1 ===== -->
+            <div class="form-step" :class="{ active: currentStep === 0 }">
+              <h3>Informations personnelles</h3>
+              <div class="form-group">
+                <input type="text" placeholder="Nom complet" v-model="formData.fullname" class="form-control mb-3" required>
+                <input type="email" placeholder="Email" v-model="formData.email" class="form-control mb-3" required>
+                <input type="tel" placeholder="Téléphone" v-model="formData.tel" class="form-control mb-3" required>
+                <button type="button" class="btn btn-primary w-100" @click="nextStep">Suivant</button>
+              </div>
+            </div>
+
+            <!-- ===== STEP 2 ===== -->
+            <div class="form-step" :class="{ active: currentStep === 1 }">
+              <h3>Détails du séjour</h3>
+              
+              <div class="form-group">
+                <label class="form-label">À combien voyagez-vous ?</label>
+                <div class="travellers-input">
+                  <input type="text" :value="travellersSummary" @click="showDropdown = !showDropdown" placeholder="Sélectionnez..." class="form-control" readonly>
+                  
+                  <div class="dropdown-menu" v-if="showDropdown" style="display: block; position: relative; margin-top: 5px;">
+                    <div class="p-3 border rounded">
+                      <div class="mb-3" v-for="(val, key) in formData.travellers" :key="key">
+                        <label class="form-label">{{ key === 'adults' ? 'Adultes' : key === 'children' ? 'Enfants' : 'Seniors' }}</label>
+                        <input type="number" v-model.number="formData.travellers[key]" min="0" class="form-control">
+                      </div>
+                      <button type="button" class="btn btn-success w-100" @click="showDropdown = false">Valider</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="d-flex gap-2 mt-3">
+                <button type="button" class="btn btn-secondary flex-grow-1" @click="prevStep">Précédent</button>
+                <button type="button" class="btn btn-primary flex-grow-1" @click="nextStep">Suivant</button>
+              </div>
+            </div>
+
+            <!-- ===== STEP 3 ===== -->
+            <div class="form-step" :class="{ active: currentStep === 2 }">
+              <h3>Confirmation</h3>
+              <div class="alert alert-info">
+                <p><strong>Nom:</strong> {{ formData.fullname }}</p>
+                <p><strong>Email:</strong> {{ formData.email }}</p>
+                <p><strong>Téléphone:</strong> {{ formData.tel }}</p>
+                <p><strong>Voyageurs:</strong> {{ travellersSummary }}</p>
+              </div>
+              <p class="text-muted">Vérifiez vos informations avant de valider.</p>
+
+              <div v-if="message.text" :class="'alert alert-' + message.type">
+                {{ message.text }}
+              </div>
+
+              <div class="d-flex gap-2">
+                <button type="button" class="btn btn-secondary flex-grow-1" @click="prevStep">Précédent</button>
+                <button type="submit" class="btn btn-success flex-grow-1" :disabled="isSubmitting">
+                  {{ isSubmitting ? 'Envoi...' : 'Réserver' }}
+                </button>
+              </div>
+            </div>
+
+          </form>
+          <!-- FORM END -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+   
+</div>
+</section>
+    
+
+
+
+
+
+     <script src="detailcircuit.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    
+    <script>
+      const { createApp } = Vue;
+
+      createApp({
+        data() {
+          return {
+            currentStep: 0,
+            showDropdown: false,
+            isSubmitting: false,
+            message: { text: '', type: '' },
+            formData: {
+              fullname: '',
+              email: '',
+              tel: '',
+              travellers: {
+                adults: 1,
+                children: 0,
+                seniors: 0
+              }
+            }
+          };
+        },
+        computed: {
+          travellersSummary() {
+            const { adults, children, seniors } = this.formData.travellers;
+            const parts = [];
+            if (adults > 0) parts.push(`${adults} adulte(s)`);
+            if (children > 0) parts.push(`${children} enfant(s)`);
+            if (seniors > 0) parts.push(`${seniors} senior(s)`);
+            return parts.length > 0 ? parts.join(', ') : 'Sélectionnez...';
+          }
+        },
+        methods: {
+          nextStep() {
+            // Validate current step before moving to next
+            if (this.currentStep === 0) {
+              if (!this.formData.fullname || !this.formData.email || !this.formData.tel) {
+                this.message = { text: 'Veuillez remplir tous les champs', type: 'danger' };
+                return;
+              }
+            }
+            if (this.currentStep < 2) {
+              this.currentStep++;
+            }
+          },
+          prevStep() {
+            if (this.currentStep > 0) {
+              this.currentStep--;
+              this.message = { text: '', type: '' };
+            }
+          },
+          submitReservation() {
+            this.isSubmitting = true;
+            
+            const reservationData = {
+              nom: this.formData.fullname,
+              email: this.formData.email,
+              telephone: this.formData.tel,
+              voyageurs: this.travellersSummary
+            };
+
+            console.log('Réservation soumise:', reservationData);
+
+            setTimeout(() => {
+              this.message = { text: `Misaotra ${this.formData.fullname}! Voaray ny famandrihana nataonao.`, type: 'success' };
+              this.isSubmitting = false;
+
+              setTimeout(() => {
+                this.resetForm();
+                const modalElement = document.getElementById('reservationModal');
+                if (modalElement) {
+                  const modalInstance = bootstrap.Modal.getInstance(modalElement);
+                  if (modalInstance) {
+                    modalInstance.hide();
+                  }
+                }
+              }, 1500);
+            }, 1000);
+          },
+          resetForm() {
+            this.currentStep = 0;
+            this.formData = {
+              fullname: '',
+              email: '',
+              tel: '',
+              travellers: {
+                adults: 1,
+                children: 0,
+                seniors: 0
+              }
+            };
+            this.message = { text: '', type: '' };
+            this.isSubmitting = false;
+          }
+        }
+      }).mount('#reservationApp');
+    </script>
+</body>
+</html>

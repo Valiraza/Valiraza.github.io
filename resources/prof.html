@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destination professionnelle-autochtonne</title>
+    <link rel="stylesheet" href="fontawesome/css/all.min.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="accueil.css">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dongle&display=swap" rel="stylesheet">
+    <style>
+        /* --- Header & Navigation --- */
+.login-buttom{
+    background-color: #009970;
+    color: #fff;
+    font-size: 14px;
+    padding: 8px 20px;
+    border-radius: 50px;
+    transition: 0.3s background-color;
+    text-decoration: none;
+
+}
+
+.login-buttom:hover{
+    background-color: #00b383;
+}
+
+
+
+
+.navbar{
+    background-color: #fff;
+    height: 80px;
+    margin: 20px;
+    border-radius: 16px;
+    padding: 0.5rem;
+
+}
+.navbar-toggler{
+    border: none;
+    font-size: 1.25rem;
+}
+
+.navbar-toggler:focus, .btn-close{
+    box-shadow: none;
+    outline: none;
+
+}
+
+.nav-link{
+    font-size: 1.6rem;
+    color: #8B4513;
+    position: relative;
+    font-family: "Dongle", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.nav-link:hover{
+    color: #000;
+}
+
+@media (min-width:991px) {
+.nav-link::before{
+       content: "";
+       position: absolute;
+       bottom: 0;
+       left: 50%;
+       transform: translateX(-50%);
+       width: 0;
+       height: 2px;
+       background-color: #009970;
+       visibility: hidden;
+       transition: 0.3s ease-in-out;
+    }
+.nav-link:hover::before, .nav-link.active:before{
+         width: 100%;
+         visibility: visible;
+    }
+ }
+
+ .navbar-brand{
+    font-weight: 500;
+    color: #009970;
+    font-size: 24px;
+    transition: 0.3s color;
+ }
+
+  /* --- Corporate Section Design --- */
+.corporate-section {
+    padding: 120px 0;
+    background-color: #1a1a1a; /* Fond sombre très pro */
+    color: #ffffff;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.sub-title {
+    color: #d97706;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.main-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-top: 10px;
+    line-height: 1.1;
+}
+
+.main-title span {
+    color: #d97706;
+}
+
+.header-desc {
+    font-size: 1.1rem;
+    color: #a0a0a0;
+    line-height: 1.8;
+    border-left: 2px solid #d97706;
+    padding-left: 30px;
+}
+
+/* Grille de cartes */
+.corporate-grid {
+    display: flex;
+    gap: 30px;
+    margin-top: 60px;
+    flex-wrap: wrap;
+}
+
+.corp-card {
+    flex: 1;
+    min-width: 300px;
+    background: #252525;
+    padding: 50px 40px;
+    border-radius: 4px; /* Angles droits = plus sérieux */
+    transition: all 0.4s ease;
+    border-bottom: 4px solid transparent;
+}
+
+.corp-card:hover {
+    background: #2d2d2d;
+    transform: translateY(-10px);
+    border-color: #d97706;
+}
+
+.corp-card.featured {
+    background: #ffffff;
+    color: #1a1a1a;
+}
+
+.corp-card.featured .corp-icon { color: #d97706; }
+.corp-card.featured .corp-list li i { color: #d97706; }
+
+.corp-icon {
+    font-size: 2.5rem;
+    color: #d97706;
+    margin-bottom: 25px;
+}
+
+.corp-body h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.corp-body p {
+    color: #b0b0b0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.featured .corp-body p { color: #555; }
+
+.corp-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.corp-list li {
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.corp-list li i {
+    color: #d97706;
+}
+
+/* CTA Affaires */
+.corporate-cta {
+    margin-top: 80px;
+    text-align: center;
+    padding: 40px;
+    border: 1px dashed #444;
+}
+
+.btn-corporate {
+    display: inline-block;
+    padding: 15px 40px;
+    background: #d97706;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    margin-top: 15px;
+}
+
+.btn-corporate:hover {
+    background: #fff;
+    color: #d97706;
+}
+
+/* Mobile */
+@media (max-width: 991px) {
+    .main-title { font-size: 2rem; }
+    .header-desc { margin-top: 20px; padding-left: 0; border-left: none; border-top: 2px solid #d97706; padding-top: 20px; }
+}
+
+ /* --- Section footer --- */
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #FAFAFA;
+  margin: 0;
+  padding: 0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
+
+.footer {
+  background-color: #1a1a1a; /* Noir charbon plus élégant */
+  color: #e5e7eb;
+  padding: 80px 0 0;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px 60px;
+}
+
+.footer-col {
+  flex: 1;
+  min-width: 250px;
+  margin-bottom: 30px;
+}
+
+/* Style de la marque */
+.footer-logo {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.footer-logo span {
+  color: #d97706; /* Couleur accent (Ocre/Terre) */
+}
+
+.brand-description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #9ca3af;
+  margin-bottom: 25px;
+  max-width: 300px;
+}
+
+/* Titres des colonnes */
+.footer-col h4 {
+  color: #fff;
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.footer-col h4::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 40px;
+  height: 2px;
+  background-color: #d97706;
+}
+
+/* Listes et liens */
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+
+.footer-col ul li a {
+  color: #9ca3af;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.footer-col ul li a i {
+  margin-right: 10px;
+  color: #d97706;
+}
+
+.footer-col ul li a:hover {
+  color: #fff;
+  padding-left: 8px;
+}
+
+/* Icônes sociales */
+.social-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icons a {
+  width: 40px;
+  height: 40px;
+  background: rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.social-icons a:hover {
+  background: #d97706;
+  transform: translateY(-5px);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  background-color: #111;
+  padding: 25px 0;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.bottom-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.credits a {
+  color: #9ca3af;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.credits a:hover {
+  color: #d97706;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .bottom-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+}
+
+    </style>
+</head>
+<body>
+  <header class="site-header">
+  <nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand me-auto" href="#"><img src="img/logoauto.jpg" width="100" height="60" alt="Village malgache" class="about-image"></a>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><a class="navbar-brand me-auto" href="#"><img src="img/logoauto.jpg" width="80" height="60" alt="Village malgache" class="about-image"></a></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link mx-lg-2" href="accueil.html">Accueil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mx-lg-2" href="about.html">À propos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mx-lg-2" href="contact.html" >Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mx-lg-2" href="service.html" >Service</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mx-lg-2" href="destination.html" >Circuits entreprise et corporate</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mx-lg-2 active" aria-current="page" href="prof.html" >Circuits professionnels</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+</nav>
+    </header>
+    
+    
+<section id="corporate-solutions" class="corporate-section">
+    <div class="container">
+        <div class="row align-items-center mb-5">
+            <div class="col-lg-6">
+                <span class="sub-title">Partenaire de votre excellence</span>
+                <h2 class="main-title">Solutions B2B & <br><span>Logistique Organisationnelle</span></h2>
+            </div>
+            <div class="col-lg-6">
+                <p class="header-desc">Nous accompagnons les grandes institutions dans la gestion de leurs déplacements stratégiques à Madagascar. De la logistique complexe au Team Building de prestige, nous transformons vos impératifs en expériences mémorables.</p>
+            </div>
+        </div>
+
+        <div class="corporate-grid">
+            <div class="corp-card">
+                <div class="corp-icon"><i class="fas fa-briefcase"></i></div>
+                <div class="corp-body">
+                    <h3>Séjours Exécutifs</h3>
+                    <p>Gestion VIP pour délégations et conseils d'administration. Discrétion, confort haut de gamme et ponctualité absolue.</p>
+                    <ul class="corp-list">
+                        <li><i class="fas fa-check"></i> Transferts sécurisés 24/7</li>
+                        <li><i class="fas fa-check"></i> Hébergements premium sélectionnés</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="corp-card featured">
+                <div class="corp-icon"><i class="fas fa-users-gear"></i></div>
+                <div class="corp-body">
+                    <h3>MICE & Team Building</h3>
+                    <p>Organisation de séminaires et retraites stratégiques en pleine nature pour renforcer la cohésion de vos cadres.</p>
+                    <ul class="corp-list">
+                        <li><i class="fas fa-check"></i> Facilitation et logistique d'ateliers</li>
+                        <li><i class="fas fa-check"></i> Activités de cohésion sur-mesure</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="corp-card">
+                <div class="corp-icon"><i class="fas fa-globe"></i></div>
+                <div class="corp-body">
+                    <h3>Logistique ONG & Projets</h3>
+                    <p>Support opérationnel pour les missions internationales : déploiement rapide et gestion de flottes sur tout le territoire.</p>
+                    <ul class="corp-list">
+                        <li><i class="fas fa-check"></i> Solutions 4x4 avec chauffeurs experts</li>
+                        <li><i class="fas fa-check"></i> Support terrain en zones reculées</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="corporate-cta">
+            <p>Besoin d'un devis sur-mesure pour votre organisation ?</p>
+            <a href="mailto:pro@votreagence.mg" class="btn-corporate">Contacter notre pôle Affaires</a>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-col brand-col">
+      <h2 class="footer-logo">Autochtone <span>Tour</span></h2>
+      <p class="brand-description">Explorez l'authenticité de Madagascar avec des experts passionnés. Des circuits sur mesure pour des souvenirs éternels.</p>
+      <div class="social-icons">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#accueil">Accueil</a></li>
+        <li><a href="#destinations">Nos circuits</a></li>
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#services">Nos services</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contactez-nous</h4>
+      <ul class="contact-list">
+        <li><i class="fas fa-envelope"></i> <a href="mailto:autochtonetourmada@gmail.com">autochtonetourmada@gmail.com</a></li>
+        <li><i class="fas fa-phone"></i> +261 32 60 773 53</li>
+        <li><i class="fas fa-map-marker-alt"></i> Lot IIW 27E Ankorahotra</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="bottom-container">
+      <p>&copy; 2026 Autochtone Tour Madagascar. Tous droits réservés.</p>
+      <p class="credits">Conçu avec passion par <a href="mailto:abrahamrandrianarivo@gmail.com">Abraham</a></p>
+    </div>
+  </div>
+</footer>
+</body>
+ <script src="accueil.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</html>

@@ -1,0 +1,371 @@
+:root {
+    /* Couleurs adaptées du logo Autochtone */
+    --blue-terdav: #4a7c2c;      /* Remplacé par le vert des feuilles du logo */
+    --orange-terdav: #8b4513;    /* Remplacé par le brun terre cuite du texte "Autochtone" */
+    --text-dark: #2d1a10;        /* Un brun très sombre pour un aspect plus naturel */
+    --text-light: #666;
+    --white: #ffffff;
+    --transition: all 0.3s ease;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text-dark);
+    background-color: #f9f9f9;
+}
+
+/* Header & Nav */
+.main-header {
+    background: var(--white);
+    height: 80px;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.nav-container {
+    width: 95%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo Integration */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 70px;
+    width: auto;
+    object-fit: contain;
+    transition: var(--transition);
+}
+
+/* Ajustement de la Navbar */
+.main-header {
+    height: 100px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+/* Style spécifique pour le logo Autochtone */
+.logo-premium {
+    height: 85px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0px 1px 1px rgba(0,0,0,0.1)); 
+    transition: transform 0.3s ease;
+}
+
+.logo-premium:hover {
+    transform: scale(1.03);
+}
+
+/* Ajustement Mobile */
+@media (max-width: 768px) {
+    .main-header {
+        height: 80px;
+    }
+    .logo-premium {
+        height: 65px;
+    }
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+}
+
+.main-nav a {
+    padding: 0 15px;
+    text-decoration: none;
+    color: var(--text-dark);
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: var(--transition);
+}
+
+/* Cache le toggle par défaut sur écran large */
+.mobile-toggle {
+    display: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    z-index: 1001;
+}
+
+@media (max-width: 992px) {
+    .mobile-toggle {
+        display: block; /* Apparaît sur mobile */
+    }
+
+    .main-nav {
+        display: none; /* Menu caché par défaut */
+        position: absolute;
+        top: 100px; /* Aligné sous le header */
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    /* Cette classe est activée par le fichier JS */
+    .main-nav.active {
+        display: flex;
+        animation: fadeInDown 0.3s ease forwards;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        width: 100%;
+        gap: 20px;
+    }
+}
+
+/* Petite animation fluide */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+.mobile-toggle i {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.mobile-toggle i.fa-xmark {
+    transform: rotate(90deg); /* Légère rotation pour l'effet visuel */
+    color: var(--orange-terdav); /* Optionnel : changer la couleur quand c'est ouvert */
+}
+
+
+/* Utilisation du Brun Terre Cuite pour le survol des liens */
+.main-nav a:hover, .main-nav a.active { color: var(--orange-terdav); }
+
+.nav-right { display: flex; align-items: center; gap: 20px; }
+
+.icon-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: var(--text-dark);
+}
+
+.btn-cta {
+    background: var(--blue-terdav); /* Le bouton principal devient Vert Forêt */
+    color: var(--white);
+    padding: 12px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 800;
+    transition: var(--transition);
+}
+
+.btn-cta:hover { 
+    background: #385d21; /* Un vert plus sombre pour le hover */
+    transform: translateY(-2px); 
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    height: 600px;
+    background: url('img/Andranotora.jpg') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--white);
+}
+
+.hero-image-overlay {
+    position: absolute;
+    top:0; left:0; width:100%; height:100%;
+    background: rgba(0,0,0,0.3);
+}
+
+.hero-content { position: relative; z-index: 2; margin-bottom: 50px; }
+
+.hero-content h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 10px; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+
+/* Search Bar */
+.search-wrapper {
+    position: absolute;
+    bottom: -40px;
+    width: 90%;
+    max-width: 1100px;
+    z-index: 10;
+}
+
+.search-bar {
+    background: var(--white);
+    padding: 15px;
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: 1.2fr 1.2fr 1fr 1fr;
+    gap: 10px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+.search-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding: 5px 15px;
+    border-right: 1px solid #eee;
+}
+
+.search-group:last-of-type { border-right: none; }
+
+.search-group label {
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--text-light);
+    margin-bottom: 5px;
+}
+
+.search-group select, .search-group input {
+    border: none;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text-dark);
+    outline: none;
+    cursor: pointer;
+}
+
+.btn-search {
+    background: var(--orange-terdav); /* Le bouton recherche devient Terre Cuite */
+    color: var(--white);
+    border: none;
+    border-radius: 4px;
+    font-weight: 800;
+    font-size: 13px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-search:hover { background: #6b350f; } /* Un brun plus foncé au hover */
+
+/* Responsive */
+@media (max-width: 992px) {
+    .main-nav, .nav-right .icon-btn { display: none; }
+    
+    .hero-section { height: 500px; }
+    .hero-content h1 { font-size: 2rem; }
+    
+}
+
+
+
+@media (max-width: 992px) {
+    /* 1. Remonter le wrapper pour qu'il empiète davantage sur le Hero */
+    .search-wrapper {
+        bottom: -60px; /* Ajustez cette valeur (ex: -40px ou -80px) selon la hauteur de votre Hero */
+        width: 92%;
+        margin: 0 auto;
+        left: 4%; /* Centre le wrapper */
+    }
+
+    /* 2. Compacter la barre de recherche */
+    .search-bar {
+        grid-template-columns: 1fr; /* Garde une colonne sur mobile */
+        gap: 8px; /* Réduit l'espace entre les éléments */
+        padding: 12px; /* Réduit le rembourrage interne */
+    }
+
+    /* 3. Réduire la taille des textes et des champs */
+    .search-group {
+        padding: 4px 10px;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .search-group label {
+        font-size: 9px; /* Libellés plus petits */
+        margin-bottom: 2px;
+    }
+
+    .search-group select, 
+    .search-group input {
+        font-size: 13px;
+        padding: 5px 0;
+    }
+
+    /* 4. Bouton plus compact */
+    .btn-search {
+        padding: 12px;
+        font-size: 12px;
+        margin-top: 5px;
+    }
+}
+
+
+
+
+
+ .font-outfit { font-family: 'Outfit', sans-serif; }
+  .font-playfair { font-family: 'Playfair Display', serif; }
+  .reveal-text { transform: translateY(20px); opacity: 0; transition: all 0.5s ease; }
+  .group:hover .reveal-text { transform: translateY(0); opacity: 1; }
+
+
+  .testimonial-card {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(0,0,0,0.05);
+  }
+  .testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+    border-color: #4a7c2c;
+  }
+
+
+
+     .font-exodus { font-family: 'Inter', sans-serif; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .card-gradient { background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 60%, transparent 100%); }
+
+  .footer-custom-bg {
+    background-color: #0f0f0f;
+    background-image: radial-gradient(circle at 50% -20%, #1a2a14 0%, #0f0f0f 60%);
+    position: relative;
+}
+
+.footer-link {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.footer-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: #4a7c2c;
+    transition: width 0.3s ease;
+}

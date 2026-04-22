@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Admin Dashboard - Tours</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/bootstrap-icons.css" rel="stylesheet">
+<link rel="stylesheet" href="fontawesome/css/all.min.css">
+
+<style>
+body { background:#f5f6fa; }
+.sidebar { width:260px;background:#0d6efd;color:white;height:100vh; position:fixed;left:-260px;top:0;transition:.3s;z-index:1050; }
+.sidebar.show { left:0 }
+.sidebar a { color:white;text-decoration:none;padding:12px 20px;display:flex;gap:10px }
+.sidebar a:hover { background:rgba(255,255,255,.15) }
+.avatar { width:80px;height:80px;border-radius:50%;overflow:hidden;background:white;margin:20px auto;cursor:pointer; }
+.avatar img { width:100%;height:100%;object-fit:cover; }
+.content { padding:20px; }
+.modal-cam { position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;z-index:2000; }
+.btn-icon { background: none;border: none;cursor: pointer;padding: 4px;font-size: 1.2rem;color: #333; }
+.btn-icon:hover { color: #007bff; }
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar" :class="{show:menuOpen}">
+    <div class="d-flex justify-content-between align-items-center px-3 py-2">
+      <strong>ADMIN</strong>
+      <i class="bi bi-x-lg" style="cursor:pointer" @click="menuOpen=false"></i>
+    </div>
+
+    <div ref="avatar" class="avatar" @click="toggleProfileMenu">
+      <img v-if="profileImage" :src="profileImage" alt="Admin Photo">
+      <i v-else class="bi bi-person"></i>
+    </div>
+
+    <div v-if="showProfileMenu" class="bg-white text-dark rounded shadow p-3 mx-3 mb-3" ref="profileMenu">
+      <button class="btn btn-light w-100 mb-2" @click="showPhoto=true">
+        <i class="bi bi-eye"></i> Voir la photo
+      </button>
+      <label class="btn btn-light w-100 mb-2">
+        <i class="bi bi-upload"></i> Insérer une photo
+        <input type="file" hidden accept="image/*" @change="onPhotoChange">
+      </label>
+      <button class="btn btn-primary w-100" @click="uploadPhoto">Upload</button>
+    </div>
+
+    <a href="#"><i class="bi bi-calendar-check"></i> Réservations</a>
+    <a href="#"><i class="bi bi-map"></i> Tours</a>
+    <a href="#"><i class="bi bi-speedometer2"></i> Dashboard</a>
+    <a href="#"><i class="bi bi-gear"></i> Paramètres</a>
+    <hr class="mx-3">
+    <a href="#" @click="logout"><i class="bi bi-box-arrow-right"></i> Déconnexion</a>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+    <div class="bg-white p-3 rounded mb-4 d-flex justify-content-between">
+      <i class="bi bi-list fs-3" @click="menuOpen=true" style="cursor:pointer"></i>
+      <div>
+        <i class="bi bi-bell fs-4 me-3"></i>
+        <i class="bi bi-chat fs-4"></i>
+      </div>
+    </div>
+
+    <!-- SECTION TOURS ADMIN -->
+    <div class="card p-4 mt-4">
+      <div class="d-flex justify-content-between mb-3">
+        <h4>Tours</h4>
+        <button class="btn btn-success" @click="showTourForm=true; editTour=null">
+          <i class="fa-solid fa-plus"></i> Ajouter un Tour
+        </button>
+      </div>
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Durée</th>
+            <th>Prochain départ</th>
+            <th>Niveau</th>
+            <th>Prix</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="tour in tours" :key="tour.id">
+            <td><img :src="tour.image" style="width:80px; height:50px; object-fit:cover;"></td>
+            <td>{{ tour.title }}</td>
+            <td>{{ tour.description }}</td>
+            <td>{{ tour.duration_days }} jours</td>
+            <td>{{ tour.next_departure }}</td>
+            <td>{{ tour.level }}</td>
+            <td>{{ tour.price }} MGA</td>
+            <td>
+              <span class="badge" :class="tour.status==='published'?'bg-success':'bg-secondary'">{{ tour.status }}</span>
+            </td>
+            <td>
+              <button class="btn btn-sm btn-primary me-1" @click="editTourItem(tour)">
+                <i class="fa-solid fa-pen"></i>
+              </button>
+              <button class="btn btn-sm btn-danger" @click="deleteTourItem(tour.id)">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- MODAL FORM TOUR -->
+    <div v-if="showTourForm" class="modal-cam" @click.self="showTourForm=false">
+      <div class="bg-white p-4 rounded" style="width:500px;">
+        <h5>{{ editTour ? 'Modifier Tour' : 'Ajouter Tour' }}</h5>
+        <div class="mb-2"><label>Title</label><input type="text" v-model="tourForm.title" class="form-control"></div>
+        <div class="mb-2"><label>Description</label><textarea v-model="tourForm.description" class="form-control"></textarea></div>
+        <div class="mb-2"><label>Durée (jours)</label><input type="number" v-model="tourForm.duration_days" class="form-control"></div>
+        <div class="mb-2"><label>Prochain départ</label><input type="date" v-model="tourForm.next_departure" class="form-control"></div>
+        <div class="mb-2"><label>Niveau</label><input type="text" v-model="tourForm.level" class="form-control"></div>
+        <div class="mb-2"><label>Prix (MGA)</label><input type="number" v-model="tourForm.price" class="form-control"></div>
+        <div class="mb-2">
+          <label>Image</label>
+          <input type="file" @change="onTourImageChange">
+          <img v-if="tourForm.imagePreview" :src="tourForm.imagePreview" style="width:100px; margin-top:5px;">
+        </div>
+        <div class="text-end">
+          <button class="btn btn-secondary me-2" @click="showTourForm=false">Annuler</button>
+          <button class="btn btn-primary" @click="saveTour">{{ editTour ? 'Modifier' : 'Créer' }}</button>
+        </div>
+      </div>
+    </div>
+
+    </div>
+    
+    <!-- MODAL PHOTO ADMIN -->
+    <div v-if="showPhoto" class="modal-cam" @click.self="showPhoto=false">
+    <img :src="profileImage" class="rounded" style="max-width:300px">
+    </div>
+
+</div>
+
+
+<script src="js/vue.global.js"></script>
+<script>
+Vue.createApp({
+  data() {
+    return {
+      menuOpen:false,
+      showProfileMenu:false,
+      showPhoto:false,
+      profileImage:'http://127.0.0.1:8000/img/allee.jpg',
+      selectedPhoto:null,
+      photoPreview:null,
+      tours:[],
+      showTourForm:false,
+      editTour:null,
+      tourForm:{
+        title:'',
+        description:'',
+        duration_days:1,
+        next_departure:'',
+        level:'',
+        price:0,
+        imageFile:null,
+        imagePreview:null
+      }
+    }
+  },
+  async mounted() {
+    await this.fetchProfile();
+    await this.fetchTours();
+    document.addEventListener("click", this.handleClickOutside);
+  },
+  beforeUnmount() {
+    document.removeEventListener("click", this.handleClickOutside);
+  },
+  methods:{
+    toggleProfileMenu(){ this.showProfileMenu=!this.showProfileMenu; },
+    handleClickOutside(e){
+      if(!this.showProfileMenu) return;
+      const avatar=this.$refs.avatar; const menu=this.$refs.profileMenu;
+      if(avatar&&!avatar.contains(e.target)&&menu&&!menu.contains(e.target)) this.showProfileMenu=false;
+    },
+    logout(){ localStorage.removeItem("access_token"); window.location.href="login.html"; },
+    onPhotoChange(e){ this.selectedPhoto=e.target.files[0]; if(this.selectedPhoto) this.photoPreview=URL.createObjectURL(this.selectedPhoto); },
+    async uploadPhoto(){
+      if(!this.selectedPhoto){ alert("Veuillez sélectionner une photo"); return; }
+      const token=localStorage.getItem('access_token'); const formData=new FormData(); formData.append('photo',this.selectedPhoto);
+      try{
+        const res=await fetch('http://127.0.0.1:8000/api/admin/photo',{method:'POST',headers:{Authorization:`Bearer ${token}`},body:formData});
+        const data=await res.json(); if(!res.ok) throw data.message||"Erreur upload"; this.profileImage=data.photo_url; alert("Photo uploadée !");
+      }catch(e){ console.error(e); alert("Impossible d'uploader la photo."); }
+    },
+    async fetchProfile(){
+      const token=localStorage.getItem('access_token');
+      try{ const res=await fetch('http://127.0.0.1:8000/api/admin/profile',{headers:{Authorization:`Bearer ${token}`}}); const data=await res.json(); this.profileImage=data.photo; }
+      catch(e){ console.error("Impossible de récupérer le profil",e); }
+    },
+    async fetchTours(){
+      const token=localStorage.getItem('access_token');
+      try{
+        const res=await fetch('http://127.0.0.1:8000/api/admin/tours',{headers:{Authorization:`Bearer ${token}`}});
+        const data=await res.json(); this.tours=data;
+      }catch(e){ console.error("Erreur fetch tours",e); }
+    },
+    editTourItem(tour){ this.editTour=tour; this.tourForm={...tour,imageFile:null,imagePreview:tour.image}; this.showTourForm=true; },
+    onTourImageChange(e){ const file=e.target.files[0]; if(file){ this.tourForm.imageFile=file; this.tourForm.imagePreview=URL.createObjectURL(file); } },
+    async saveTour(){
+      const token=localStorage.getItem('access_token'); const formData=new FormData();
+      formData.append('title',this.tourForm.title);
+      formData.append('description',this.tourForm.description);
+      formData.append('duration_days',this.tourForm.duration_days);
+      formData.append('next_departure',this.tourForm.next_departure);
+      formData.append('level',this.tourForm.level);
+      formData.append('price',this.tourForm.price);
+      if(this.tourForm.imageFile) formData.append('image',this.tourForm.imageFile);
+      try{
+        let url='http://127.0.0.1:8000/api/admin/tours'; let method='POST';
+        if(this.editTour){ url+=`/${this.editTour.id}`; method='POST'; formData.append('_method','PUT'); }
+        const res=await fetch(url,{method,headers:{Authorization:`Bearer ${token}`},body:formData});
+        const data=await res.json(); if(!res.ok) throw data.message||"Erreur save tour";
+        alert(this.editTour?'Tour modifié !':'Tour créé !'); this.showTourForm=false; await this.fetchTours();
+      }catch(e){ console.error(e); alert("Impossible de sauvegarder le tour"); }
+    },
+    async deleteTourItem(id){
+      if(!confirm("Voulez-vous vraiment supprimer ce tour ?")) return;
+      const token=localStorage.getItem('access_token');
+      try{
+        const res=await fetch(`http://127.0.0.1:8000/api/admin/tours/${id}`,{method:'DELETE',headers:{Authorization:`Bearer ${token}`}});
+        const data=await res.json(); if(!res.ok) throw data.message||"Erreur delete"; alert("Tour supprimé !"); await this.fetchTours();
+      }catch(e){ console.error(e); alert("Impossible de supprimer le tour"); }
+    }
+  }
+}).mount("#app");
+</script>
+</body>
+</html>

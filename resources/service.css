@@ -1,0 +1,620 @@
+/* --- Styles Généraux & Utilitaires --- */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playwrite+CZ:wght@100..400&family=Playwrite+NO:wght@100..400&display=swap');
+
+body {
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    background-color: #FAFAFA;
+    color: #1f2937;
+    margin: 0;
+}
+
+
+@media (min-width: 640px) { .container { max-width: 640px; } }
+@media (min-width: 768px) { .container { max-width: 768px; } }
+@media (min-width: 1024px) { .container { max-width: 1024px; } }
+@media (min-width: 1280px) { .container { max-width: 1280px; } }
+
+.btn {
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    
+}
+
+
+.btn-primary {
+    background-color: rgba(0, 0, 0, 0.0);
+    color: #009970;
+    border: 2px solid #009970;
+    --bs-btn-disabled-border-color: #009970;
+    --bs-btn-bg: #009970;
+    --bs-btn-border-color: #009970;
+    --bs-btn-hover-bg: #009970;
+    --bs-btn-hover-border-color: #009970;
+    --bs-btn-focus-shadow-rgb: 49, 132, 253;
+    --bs-btn-active-bg: #009970;
+    --bs-btn-active-border-color: #009970;
+    
+}
+.btn-primary:hover{
+    border-color: #97a87a;
+    background-color: #97a87a;
+}
+
+.btn-primary-btn-lg :hover {
+    background-color: #009970;
+    border-color: #009970;
+}
+.btn-lg:hover{
+    background: #009970;
+
+}
+
+.btn-lg {
+    padding: 0.75rem 2rem;
+    font-size: 1.125rem;
+    text-align: center;
+}
+
+.btn-sm {
+    padding: 0.5rem 1rem;
+    margin-left: 0%;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    font-size: 2.0rem;
+    color: #8B4513;
+    margin-bottom: 1rem;
+   font-family: "Ubuntu", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.section-subtitle {
+    font-size: 1.0rem;
+    color: #000;
+    max-width: 56rem;
+    margin: 0 auto;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* --- Header & Navigation --- */
+.login-buttom{
+    background-color: #009970;
+    color: #fff;
+    font-size: 14px;
+    padding: 8px 20px;
+    border-radius: 50px;
+    transition: 0.3s background-color;
+    text-decoration: none;
+
+}
+
+.login-buttom:hover{
+    background-color: #00b383;
+}
+
+
+
+
+.navbar{
+    background-color: #fff;
+    height: 80px;
+    margin: 20px;
+    border-radius: 16px;
+    padding: 0.5rem;
+
+}
+.navbar-toggler{
+    border: none;
+    font-size: 1.25rem;
+}
+
+.navbar-toggler:focus, .btn-close{
+    box-shadow: none;
+    outline: none;
+
+}
+
+.nav-link{
+    font-size: 1.0rem;
+    color: #8B4513;;
+    position: relative;
+    font-family: "Dongle", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.nav-link:hover{
+    color: #000;
+}
+
+@media (min-width:991px) {
+.nav-link::before{
+       content: "";
+       position: absolute;
+       bottom: 0;
+       left: 50%;
+       transform: translateX(-50%);
+       width: 0;
+       height: 2px;
+       background-color: #009970;
+       visibility: hidden;
+       transition: 0.3s ease-in-out;
+    }
+.nav-link:hover::before, .nav-link.active:before{
+         width: 100%;
+         visibility: visible;
+    }
+ }
+
+ .navbar-brand{
+    font-weight: 500;
+    color: #009970;
+    font-size: 24px;
+    transition: 0.3s color;
+ }
+/* --- Section Hero --- */
+.hero-section {
+    width: 100%;
+    height: 70vh;
+    background: url(img/road.jpg) no-repeat center;
+    background-size: cover;
+    padding-top: 15%;
+
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70%;
+  background: rgba(0,0,0,0.7); /* noir transparent */
+  z-index: 1; /* place l’overlay au-dessus */
+}
+
+.hero-section * {
+  position: relative;
+  z-index: 2; /* pour que le texte reste visible au-dessus de l’overlay */
+}
+
+.hero-section hr{
+  border: none;
+  height: 5px;
+  background-color: #663500;
+  z-index: 1;
+  margin-left: 10%;
+  margin-right: 78%;
+  opacity: 2.25;
+}
+
+.hero-section h1{
+    font-size: 3.2rem;
+    margin-left: 10%;
+    margin-top: 30px;
+    margin-right: 10%;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+@media only screen and (max-width:500px) {
+  /* For mobile phones: */
+  .hero-section h1 {
+    padding-top: 70px;
+    text-align: center;
+  }
+  .hero-section hr{
+    margin-left: 32%;
+    margin-right: 32%;
+  }
+}
+
+/* --- Services Premium Section --- */
+.services-premium {
+    padding: 100px 0;
+    background-color: #f9f7f5; /* Un blanc cassé plus chaleureux */
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.section-header-elegant {
+    text-align: center;
+    margin-bottom: 70px;
+    padding: 0 15px;
+}
+
+.eyebrow {
+    color: #8B4513;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    color: #2d1b0e;
+    font-weight: 800;
+    line-height: 1.2;
+    max-width: 800px;
+    margin: 0 auto 20px;
+}
+
+.header-line {
+    width: 60px;
+    height: 4px;
+    background: #8B4513;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+/* Grille de services */
+.services-grid-modern {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Carte de Service Individuelle */
+.service-card-v3 {
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: 1px solid #f1f1f1;
+}
+
+.service-card-v3:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 50px rgba(139, 69, 19, 0.12);
+}
+
+.card-visual {
+    position: relative;
+    height: 180px;
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.service-card-v3:hover .card-img {
+    transform: scale(1.1);
+}
+
+/* Badge icône flottant */
+.icon-floating {
+    position: absolute;
+    bottom: -25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    background: #2d1b0e; /* Couleur sombre pro */
+    color: #fff;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    border: 3px solid #fff;
+    z-index: 10;
+}
+
+.card-info {
+    padding: 40px 25px 30px;
+}
+
+.service-name {
+    font-size: 1.4rem;
+    color: #2d1b0e;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.service-description {
+    color: #6b7280;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    font-weight: 400; /* Texte plus léger pour l'élégance */
+}
+
+/* Bouton Savoir Plus Raffiné */
+.savoirplus-btn {
+    text-decoration: none;
+    color: #8B4513;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.savoirplus-btn:hover {
+    gap: 15px;
+    color: #5d2e0d;
+}
+
+/* --- Panel Modal (Refonte totale) --- */
+.category-panel {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.category-panel.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.panel-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(45, 27, 14, 0.85);
+    backdrop-filter: blur(8px);
+}
+
+.panel-content {
+    position: relative;
+    background: #fff;
+    width: 90%;
+    max-width: 850px;
+    margin: 5% auto;
+    border-radius: 30px;
+    padding: 50px;
+    transform: scale(0.9) translateY(30px);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.category-panel.active .panel-content {
+    transform: scale(1) translateY(0);
+}
+
+.panel-close {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    background: #f3f4f6;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: 0.3s;
+}
+
+.panel-close:hover { background: #8B4513; color: #fff; }
+
+.panel-title {
+    color: #8B4513;
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 35px;
+    text-align: center;
+}
+
+.panel-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+}
+
+.panel-item {
+    display: flex;
+    gap: 20px;
+    padding: 25px;
+    background: #fdfbf9;
+    border-radius: 20px;
+    border: 1px solid #eee;
+    transition: 0.3s;
+}
+
+.panel-item:hover {
+    border-color: #8B4513;
+    background: #fff;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.p-icon {
+    font-size: 1.8rem;
+    color: #8B4513;
+}
+
+.p-text h4 { margin: 0 0 8px 0; font-size: 1.1rem; color: #2d1b0e; font-weight: 700; }
+.p-text p { margin: 0; font-size: 0.9rem; color: #6b7280; line-height: 1.5; }
+
+.panel-item-link { text-decoration: none; }
+
+@media (max-width: 768px) {
+    .panel-content { padding: 30px 20px; margin: 10% auto; }
+    .section-title { font-size: 1.6rem; }
+}
+
+ /* --- Section footer --- */
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #FAFAFA;
+  margin: 0;
+  padding: 0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
+
+.footer {
+  background-color: #1a1a1a; /* Noir charbon plus élégant */
+  color: #e5e7eb;
+  padding: 80px 0 0;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px 60px;
+}
+
+.footer-col {
+  flex: 1;
+  min-width: 250px;
+  margin-bottom: 30px;
+}
+
+/* Style de la marque */
+.footer-logo {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.footer-logo span {
+  color: #d97706; /* Couleur accent (Ocre/Terre) */
+}
+
+.brand-description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #9ca3af;
+  margin-bottom: 25px;
+  max-width: 300px;
+}
+
+/* Titres des colonnes */
+.footer-col h4 {
+  color: #fff;
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.footer-col h4::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 40px;
+  height: 2px;
+  background-color: #d97706;
+}
+
+/* Listes et liens */
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+
+.footer-col ul li a {
+  color: #9ca3af;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.footer-col ul li a i {
+  margin-right: 10px;
+  color: #d97706;
+}
+
+.footer-col ul li a:hover {
+  color: #fff;
+  padding-left: 8px;
+}
+
+/* Icônes sociales */
+.social-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icons a {
+  width: 40px;
+  height: 40px;
+  background: rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.social-icons a:hover {
+  background: #d97706;
+  transform: translateY(-5px);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  background-color: #111;
+  padding: 25px 0;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.bottom-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.credits a {
+  color: #9ca3af;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.credits a:hover {
+  color: #d97706;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .bottom-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+}

@@ -1,0 +1,570 @@
+/* --- Styles Généraux & Utilitaires --- */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playwrite+CZ:wght@100..400&family=Playwrite+NO:wght@100..400&display=swap');
+
+body {
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    background-color: #FAFAFA;
+    color: #1f2937;
+    margin: 0;
+}
+
+
+@media (min-width: 640px) { .container { max-width: 640px; } }
+@media (min-width: 768px) { .container { max-width: 768px; } }
+@media (min-width: 1024px) { .container { max-width: 1024px; } }
+@media (min-width: 1280px) { .container { max-width: 1280px; } }
+
+.btn {
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    
+}
+
+
+.btn-primary {
+    background-color: rgba(0, 0, 0, 0.0);
+    color: #009970;
+    border: 2px solid #009970;
+    --bs-btn-disabled-border-color: #009970;
+    --bs-btn-bg: #009970;
+    --bs-btn-border-color: #009970;
+    --bs-btn-hover-bg: #009970;
+    --bs-btn-hover-border-color: #009970;
+    --bs-btn-focus-shadow-rgb: 49, 132, 253;
+    --bs-btn-active-bg: #009970;
+    --bs-btn-active-border-color: #009970;
+    
+}
+.btn-primary:hover{
+    border-color: #009970;
+    background-color: #97a87a;
+}
+
+.btn-primary-btn-lg :hover {
+    background-color: #009970;
+    border-color: #009970;
+}
+.btn-lg:hover{
+    background: #009970;
+
+}
+
+.btn-lg {
+    padding: 0.75rem 2rem;
+    font-size: 1.125rem;
+    text-align: center;
+}
+
+.btn-sm {
+    padding: 0.5rem 1rem;
+    margin-left: 330%;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    font-size: 2.80rem;
+    font-weight: 700;
+    color: #8B4513;
+    margin-bottom: 1rem;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.section-subtitle {
+    font-size: 1.25rem;
+    color: #4b5563;
+    max-width: 56rem;
+    margin: 0 auto;
+}
+
+/* --- Header & Navigation --- */
+.login-buttom{
+    background-color: #009970;
+    color: #fff;
+    font-size: 14px;
+    padding: 8px 20px;
+    border-radius: 50px;
+    transition: 0.3s background-color;
+    text-decoration: none;
+
+}
+
+.login-buttom:hover{
+    background-color: #00b383;
+}
+
+
+
+
+.navbar{
+    background-color: #fff;
+    height: 80px;
+    margin: 20px;
+    border-radius: 16px;
+    padding: 0.5rem;
+
+}
+.navbar-toggler{
+    border: none;
+    font-size: 1.25rem;
+}
+
+.navbar-toggler:focus, .btn-close{
+    box-shadow: none;
+    outline: none;
+
+}
+
+.nav-link{
+    font-size: 1.0rem;
+    color: #8B4513;;
+    position: relative;
+    font-family: "Dongle", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.nav-link:hover{
+    color: #000;
+}
+
+@media (min-width:991px) {
+.nav-link::before{
+       content: "";
+       position: absolute;
+       bottom: 0;
+       left: 50%;
+       transform: translateX(-50%);
+       width: 0;
+       height: 2px;
+       background-color: #009970;
+       visibility: hidden;
+       transition: 0.3s ease-in-out;
+    }
+.nav-link:hover::before, .nav-link.active:before{
+         width: 100%;
+         visibility: visible;
+    }
+ }
+
+ .navbar-brand{
+    font-weight: 500;
+    color: #009970;
+    font-size: 24px;
+    transition: 0.3s color;
+ }
+
+/* --- Section Hero --- */
+.hero-section {
+  width: 100%;
+  height: 70vh; /* occupe toute la hauteur de l’écran */
+  position: relative;
+  margin: 0; /* pas de marge autour */
+}
+
+.hero-slide {
+  width: 100%;
+  height: 70vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.hero-slide::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5); /* overlay sombre */
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  text-align: left;
+  padding-top: 170px; /* espace pour éviter que le h1 soit caché par la navbar */
+  padding-left: 10%;
+}
+
+.hero-content h1 {
+  font-size: 3.2rem;
+  margin-bottom: 20px;
+  font-family: "Dongle", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.hero-content hr {
+  border: none;
+  height: 5px;
+  background-color: #663500;
+  width: 80px;
+  opacity: 0.9;
+}
+
+@media only screen and (max-width:500px) {
+  /* For mobile phones: */
+  .hero-section h1 {
+    padding-top: 50px;
+    text-align: center;
+  }
+  .hero-section hr{
+    margin-left: 32%;
+    margin-right: 32%;
+  }
+}
+
+/* Section contact */
+.contact-section {
+  padding: 60px 20px;
+  background: #f9f9f9;
+}
+
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* deux colonnes sur desktop */
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Responsive tablette */
+@media (max-width: 992px) {
+  .contact-container {
+    grid-template-columns: 1fr; /* une seule colonne */
+  }
+  .contact-map {
+    min-height: 300px;
+  }
+}
+
+/* Responsive mobile */
+@media (max-width: 576px) {
+  .contact-section {
+    padding: 40px 10px;
+  }
+  .contact-form {
+    padding: 20px;
+  }
+  .form-group {
+    margin-bottom: 20px;
+  }
+  button {
+    padding: 10px;
+    font-size: 0.9em;
+  }
+}
+
+
+.contact-map {
+  min-height: 400px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.contact-form {
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+:root {
+  --primary: #663500;
+  --bg: #f9f9f9;
+  --text: #333;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  outline: none;
+  font-size: 1em;
+  background: transparent;
+  transition: border-color 0.3s;
+}
+
+.form-group label {
+  position: absolute;
+  top: 12px;
+  left: 0;
+  color: #777;
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--primary);
+}
+
+.form-group input:focus + label,
+.form-group input:valid + label,
+.form-group textarea:focus + label,
+.form-group textarea:valid + label {
+  top: -10px;
+  font-size: 0.8em;
+  color: var(--primary);
+}
+
+h2{
+  color: #663300;
+  font-family: "Dongle", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+
+
+.services-section {
+    padding: 80px 0;
+    background-color: #fcfbf9; /* Un blanc cassé plus premium */
+}
+
+.services-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.service-item {
+    background-color: #ffffff;
+    padding: 40px 30px;
+    border-radius: 16px;
+    /* Ombre très légère et diffuse pour un look moderne */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04); 
+    text-align: center;
+    flex: 1 1 280px; /* S'adapte mieux aux écrans */
+    max-width: 350px;
+    border: 1px solid rgba(139, 69, 19, 0.05); /* Bordure quasi invisible */
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Effet au survol élégant */
+.service-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(139, 69, 19, 0.1);
+    border-color: rgba(139, 69, 19, 0.2);
+}
+
+.service-icon-wrapper {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 25px;
+    background-color: #8B4513;
+    border-radius: 20px; /* Carré arrondi pour un look plus "App" moderne */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.service-item:hover .service-icon-wrapper {
+    transform: rotate(10deg); /* Petite animation discrète */
+}
+
+.service-icon {
+    font-size: 1.8rem;
+    color: #ffffff;
+}
+
+.service-title {
+    font-size: 1.25rem;
+    color: #2d1b0e; /* Marron très foncé presque noir pour le luxe */
+    margin-bottom: 15px;
+    /* Remplacement de Dongle par une police plus pro */
+    font-family: 'Ubuntu', sans-serif; 
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.service-text {
+    font-size: 0.95rem;
+    color: #6b7280;
+    line-height: 1.6;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+
+ /* --- Section footer --- */
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #FAFAFA;
+  margin: 0;
+  padding: 0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
+
+.footer {
+  background-color: #1a1a1a; /* Noir charbon plus élégant */
+  color: #e5e7eb;
+  padding: 80px 0 0;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px 60px;
+}
+
+.footer-col {
+  flex: 1;
+  min-width: 250px;
+  margin-bottom: 30px;
+}
+
+/* Style de la marque */
+.footer-logo {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.footer-logo span {
+  color: #d97706; /* Couleur accent (Ocre/Terre) */
+}
+
+.brand-description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #9ca3af;
+  margin-bottom: 25px;
+  max-width: 300px;
+}
+
+/* Titres des colonnes */
+.footer-col h4 {
+  color: #fff;
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.footer-col h4::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 40px;
+  height: 2px;
+  background-color: #d97706;
+}
+
+/* Listes et liens */
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+
+.footer-col ul li a {
+  color: #9ca3af;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.footer-col ul li a i {
+  margin-right: 10px;
+  color: #d97706;
+}
+
+.footer-col ul li a:hover {
+  color: #fff;
+  padding-left: 8px;
+}
+
+/* Icônes sociales */
+.social-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icons a {
+  width: 40px;
+  height: 40px;
+  background: rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.social-icons a:hover {
+  background: #d97706;
+  transform: translateY(-5px);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  background-color: #111;
+  padding: 25px 0;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.bottom-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.credits a {
+  color: #9ca3af;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.credits a:hover {
+  color: #d97706;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .bottom-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+}
